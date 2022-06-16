@@ -1,0 +1,15 @@
+/Users/cherwah/git_repos/OOPCS/TicTacToe_net6/bin/Debug/net6.0/TicTacToe_net6
+/Users/cherwah/git_repos/OOPCS/TicTacToe_net6/bin/Debug/net6.0/TicTacToe_net6.deps.json
+/Users/cherwah/git_repos/OOPCS/TicTacToe_net6/bin/Debug/net6.0/TicTacToe_net6.runtimeconfig.json
+/Users/cherwah/git_repos/OOPCS/TicTacToe_net6/bin/Debug/net6.0/TicTacToe_net6.dll
+/Users/cherwah/git_repos/OOPCS/TicTacToe_net6/bin/Debug/net6.0/TicTacToe_net6.pdb
+/Users/cherwah/git_repos/OOPCS/TicTacToe_net6/obj/Debug/net6.0/TicTacToe_net6.csproj.AssemblyReference.cache
+/Users/cherwah/git_repos/OOPCS/TicTacToe_net6/obj/Debug/net6.0/TicTacToe_net6.GeneratedMSBuildEditorConfig.editorconfig
+/Users/cherwah/git_repos/OOPCS/TicTacToe_net6/obj/Debug/net6.0/TicTacToe_net6.AssemblyInfoInputs.cache
+/Users/cherwah/git_repos/OOPCS/TicTacToe_net6/obj/Debug/net6.0/TicTacToe_net6.AssemblyInfo.cs
+/Users/cherwah/git_repos/OOPCS/TicTacToe_net6/obj/Debug/net6.0/TicTacToe_net6.csproj.CoreCompileInputs.cache
+/Users/cherwah/git_repos/OOPCS/TicTacToe_net6/obj/Debug/net6.0/TicTacToe_net6.dll
+/Users/cherwah/git_repos/OOPCS/TicTacToe_net6/obj/Debug/net6.0/refint/TicTacToe_net6.dll
+/Users/cherwah/git_repos/OOPCS/TicTacToe_net6/obj/Debug/net6.0/TicTacToe_net6.pdb
+/Users/cherwah/git_repos/OOPCS/TicTacToe_net6/obj/Debug/net6.0/TicTacToe_net6.genruntimeconfig.cache
+/Users/cherwah/git_repos/OOPCS/TicTacToe_net6/obj/Debug/net6.0/ref/TicTacToe_net6.dll
