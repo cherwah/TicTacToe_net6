@@ -18,7 +18,7 @@ class Game
 
   public void Start()
   {
-    string winner;
+    string? winner;
     bool is_draw;
 
     ShowOpeningMenu();
@@ -66,23 +66,43 @@ class Game
       Console.WriteLine("2. O");
       Console.Write("\nPLEASE CHOOSE ONE: ");
 
-      string input = Console.ReadLine();
+      string? input = Console.ReadLine();
+
+      if (input == null) 
+      {
+        Console.WriteLine("INVALID INPUT.");
+        continue; // jump to beginning of while loop
+      }
+
+      int option = 0;
+
       try
       {
-        int option = int.Parse(input);
-
-        if (option == 1)
-        {
-          human = 'X';
-          computer = 'O';
-        }
-        else if (option == 2)
-        {
-          human = 'O';
-          computer = 'X';
-        }
+        option = int.Parse(input);
       }
-      catch (Exception) { }
+      catch (Exception)
+      {
+        Console.WriteLine("INVALID INPUT.");
+        continue; // jump to beginning of while loop
+      }
+
+      if (option == 1)
+      {
+        human = 'X';
+        computer = 'O';
+
+        Console.WriteLine("HUMAN: 'X', COMPUTER: 'O'.\n");
+      }
+      else if (option == 2)
+      {
+        human = 'O';
+        computer = 'X';
+
+        Console.WriteLine("HUMAN: 'O', COMPUTER: 'X'.\n");
+      }
+      else {
+        Console.WriteLine("INVALID INPUT.");
+      }
     }
 
     // humans always make the first move
@@ -94,25 +114,34 @@ class Game
     while (true)
     {
       Console.Write("\nHUMAN'S MOVE (e.g. 1,2): ");
-      string input = Console.ReadLine();
-      try
+      string? input = Console.ReadLine();
+
+      if (input == null) 
       {
+        Console.WriteLine("INVALID MOVE.");
+      }
+      else 
+      {
+        // split input into horizontal and vertical position-index
         string[] pos = input.Split(',');
-        int x = int.Parse(pos[0]);
-        int y = int.Parse(pos[1]);
+
+        int x = -1, y = -1;
+        try
+        {
+          // Parse() throws an exception if input cannot be
+          // converted to an integer (e.g. "abc" as input)        
+          x = int.Parse(pos[0]);
+          y = int.Parse(pos[1]);
+        }
+        catch (Exception)
+        {          
+          Console.WriteLine("INVALID INPUT.");
+        }
 
         if (!board.SetCell(x, y, human))
         {
           Console.WriteLine("INVALID MOVE.");
         }
-        else
-        {
-          break;
-        }
-      }
-      catch (Exception)
-      {
-        Console.WriteLine("INVALID INPUT.");
       }
     }
   }
@@ -175,7 +204,7 @@ class Game
     }
   }
 
-  public (string, bool) Analyze()
+  public (string?, bool) Analyze()
   {
     board.Walk(find_winner);
     char? winSide = find_winner.GetWinSide();
