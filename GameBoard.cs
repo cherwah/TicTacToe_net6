@@ -147,7 +147,7 @@ class GameBoard
     return false;
   }
 
-  public int[] GetLastMove()
+  public int[]? GetLastMove()
   {
     if (history_len == 0)
     {

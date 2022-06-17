@@ -156,7 +156,7 @@ class Game
     FindCloser computerCloser = new FindCloser(computer);
     board.Walk(computerCloser);
 
-    (int, int)[] pos = computerCloser.GetCloser();
+    (int, int)[]? pos = computerCloser.GetCloser();
     if (pos != null)
     {
       MakeCloserMove(pos, computer);
@@ -188,10 +188,13 @@ class Game
 
   public void InformLastMove(char side)
   {
-    int[] lastMove = board.GetLastMove();
-    Console.WriteLine(String.Format("\n{0}'S MOVE: {1},{2}",
-        (side == human) ? "HUMAN" : "COMPUTER",
-        lastMove[0], lastMove[1]));
+    int[]? lastMove = board.GetLastMove();
+    
+    if (lastMove != null)
+    {
+      Console.WriteLine(String.Format("\n{0}'S MOVE: {1},{2}",
+        (side == human) ? "HUMAN" : "COMPUTER", lastMove[0], lastMove[1]));
+    }
   }
 
   public void MakeCloserMove((int, int)[] pos, char side)
@@ -210,7 +213,7 @@ class Game
 
   public (string?, bool) Analyze()
   {
-    string winner = null;
+    string? winner = null;
     bool is_draw = false;
 
     FindWinner find_winner = new FindWinner();
