@@ -37,6 +37,7 @@ class GameBoard
       row[1] = board[i, 1];
       row[2] = board[i, 2];
 
+      // (int, int)[] is an array that can store tuple of integers (e.g. (1,1)) 
       visitor.ReceiveRow(row, new (int, int)[] { (i, 0), (i, 1), (i, 2) });
       if (visitor.IsDone())
       {
