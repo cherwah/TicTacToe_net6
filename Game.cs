@@ -7,11 +7,9 @@ class Game
   private char turn;
   private bool game_over;
   private GameBoard board;
-  private FindWinner find_winner;
-
+  
   public Game()
   {
-    find_winner = new FindWinner();
     board = new GameBoard();
     game_over = false;
   }
@@ -61,14 +59,14 @@ class Game
   {
     while (human != 'X' && human != 'O')
     {
-      Console.WriteLine("\nWHICH SIDE DO YOU WANT?");
-      Console.WriteLine("\n1. X");
+      Console.WriteLine("\nWHICH SIDE DO YOU WANT?\n");
+      Console.WriteLine("1. X");
       Console.WriteLine("2. O");
       Console.Write("\nPLEASE CHOOSE ONE: ");
 
       string? input = Console.ReadLine();
 
-      if (input == null) 
+      if (input == null)
       {
         Console.WriteLine("INVALID INPUT.");
         continue; // jump to beginning of while loop
@@ -91,16 +89,17 @@ class Game
         human = 'X';
         computer = 'O';
 
-        Console.WriteLine("HUMAN: 'X', COMPUTER: 'O'.\n");
+        Console.WriteLine("HUMAN: 'X', COMPUTER: 'O'.");
       }
       else if (option == 2)
       {
         human = 'O';
         computer = 'X';
 
-        Console.WriteLine("HUMAN: 'O', COMPUTER: 'X'.\n");
+        Console.WriteLine("HUMAN: 'O', COMPUTER: 'X'.");
       }
-      else {
+      else
+      {
         Console.WriteLine("INVALID INPUT.");
       }
     }
@@ -116,11 +115,11 @@ class Game
       Console.Write("\nHUMAN'S MOVE (e.g. 1,2): ");
       string? input = Console.ReadLine();
 
-      if (input == null) 
+      if (input == null)
       {
         Console.WriteLine("INVALID MOVE.");
       }
-      else 
+      else
       {
         // split input into horizontal and vertical position-index
         string[] pos = input.Split(',');
@@ -134,11 +133,16 @@ class Game
           y = int.Parse(pos[1]);
         }
         catch (Exception)
-        {          
+        {
           Console.WriteLine("INVALID INPUT.");
         }
 
-        if (!board.SetCell(x, y, human))
+        if (board.SetCell(x, y, human))
+        {
+          // made a move successfully, can exit out of while loop
+          break;
+        }
+        else
         {
           Console.WriteLine("INVALID MOVE.");
         }
@@ -206,10 +210,13 @@ class Game
 
   public (string?, bool) Analyze()
   {
-    board.Walk(find_winner);
-    char? winSide = find_winner.GetWinSide();
     string winner = null;
     bool is_draw = false;
+
+    FindWinner find_winner = new FindWinner();
+    board.Walk(find_winner);
+
+    char? winSide = find_winner.GetWinSide();
 
     if (winSide != null)
     {
